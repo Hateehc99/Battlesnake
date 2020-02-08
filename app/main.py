@@ -2,6 +2,7 @@ import json
 import os
 import random
 import bottle
+import platform
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -92,9 +93,21 @@ def end():
 application = bottle.default_app()
 
 if __name__ == '__main__':
-    bottle.run(
-        application,
-        host=os.getenv('IP', '0.0.0.0'),
-        port=os.getenv('PORT', '8080'),
-        debug=os.getenv('DEBUG', True)
-    )
+    s = platform.system() # s now contains the name of your operating system
+    if s == 'Windows' or s == 'Darwin': # if you’re running on Windows or Mac
+        bottle.run(
+            application,
+            host=os.getenv('IP', '0.0.0.0'),
+            port=os.getenv('PORT', '8080'),
+            debug=os.getenv('DEBUG', True),
+            #server='paste'
+            server='tornado'
+        )
+    else: # otherwise serve on port 80
+        bottle.run(
+            application,
+            host=os.getenv('IP', '0.0.0.0'),
+            port=os.getenv('PORT', '80'),
+            debug=os.getenv('DEBUG', True)
+        )
+
