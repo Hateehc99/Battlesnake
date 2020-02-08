@@ -6,7 +6,7 @@ import platform
 
 from api import ping_response, start_response, move_response, end_response
 
-#lastmove = ''
+lastMove = ''
 
 @bottle.route('/')
 def index():
@@ -55,7 +55,9 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-
+    
+    global lastMove
+    
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
@@ -65,16 +67,23 @@ def move():
     directions = ['up', 'down', 'left', 'right']
     #direction = random.choice(directions)
     #direction='right'
+    
+    if lastMove=='':
+        direction='right'
+    if lastMove=='right':
+        direction='down'
+    if lastMove=='down':
+        direction='left'
+    if lastMove=='left':
+        direction='up'
+    if lastMove=='up':
+        direction='right'
+        
+    lastMove=direction
+        
     return move_response(direction)
 
-#If I set it to loop and go up, right, down, then left I think it should go in circles
-
-
-direction='up'
-direction='right'
-direction='down'
-direction='left'
-
+    
 
 @bottle.post('/end')
 def end():
