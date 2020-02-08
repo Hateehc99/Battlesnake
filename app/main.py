@@ -72,7 +72,7 @@ def move():
 direction='up'
 direction='right'
 direction='down'
-direction'left'
+direction='left'
 
 
 @bottle.post('/end')
