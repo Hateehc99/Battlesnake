@@ -68,6 +68,44 @@ def move():
     #direction = random.choice(directions)
     #direction='right'
     
+    
+    
+    #Ideas for moving toward food
+    
+    #If health < #
+    
+        #If *Head x_location - food x_location = +(positive)* then *move left*
+        #If *Head x_location - food x_location = -(negative)* then *move right*
+        #If *Head x_location - food x_location = 0* then *don't change x_location*
+        
+        #If *Head y_location - food y_location = +(positive)* then *move up*
+        #If *Head y_location - food y_location = -(negative)* then *move down*
+        #If *Head y_location - food y_location = 0* then *don't change y_location*
+    
+    
+    
+    
+    
+    #Atempts to make the snake go around the outside of the board
+    
+    #Seems like it might work with proper terminology
+    
+    #if *snake's head location* ==   y_loction=*least*  then  *go*   'right'  unless    x_loction=*max*    *then go*   direction='down'
+    #if *snake's head location* ==   x_loction=*max*  then  *go*   'down'  unless    x_loction=*max* y_loction=*max*   *then go*   direction='left'
+    #if *snake's head location* ==   y_loction=*max*  then   *go*   'left'  unless    x_loction=*least*    *then go*   direction='up' 
+    #if *snake's head location* ==   x_loction=*least*  then  *go*   'up'  unless    x_loction=*lest* y_loction=*least*   *then go*   direction='right'
+    
+    #This is just a direction I chose at random to start going
+    
+    #direction = 'right'
+    
+    
+    
+    
+    
+    
+    #This makes the snake go in circles
+    
     if lastMove=='':
         direction='right'
     if lastMove=='right':
@@ -80,7 +118,9 @@ def move():
         direction='right'
         
     lastMove=direction
-        
+    
+    
+    
     return move_response(direction)
 
     
@@ -93,7 +133,7 @@ def end():
     TODO: If your snake AI was stateful,
         clean up any stateful objects here.
     """
-    print(json.dumps(data))
+    print(json.dumps(data, indent=2))
 
     return end_response()
 
