@@ -72,18 +72,18 @@ def move():
     
     #Ideas for moving toward food
     
-    #If health < #
+    #If health < 50%?
+        #this would have it doing any other code first untill it was low
     
         #If *Head x_location - food x_location = +(positive)* then *move left*
         #If *Head x_location - food x_location = -(negative)* then *move right*
-        #If *Head x_location - food x_location = 0* then *don't change x_location*
+            #If *Head x_location - food x_location = 0* then *don't change x_location*    - don't need
         
         #If *Head y_location - food y_location = +(positive)* then *move up*
         #If *Head y_location - food y_location = -(negative)* then *move down*
-        #If *Head y_location - food y_location = 0* then *don't change y_location*
+            #If *Head y_location - food y_location = 0* then *don't change y_location*    - don't need
     
-    
-    
+   
     
     
     #Atempts to make the snake go around the outside of the board
