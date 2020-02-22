@@ -65,6 +65,12 @@ def move():
     print(json.dumps(data, indent=2))
 
     directions = ['up', 'down', 'left', 'right']
+    
+    #Terminology
+    # - data['board']['width']     how you tell max or least x
+    # - data['board']['length']     how you tell max or least y
+    
+    
     #direction = random.choice(directions)
     #direction='right'
     
@@ -72,16 +78,34 @@ def move():
     
     #Ideas for moving toward food
     
-    #If health < 50%?
-        #this would have it doing any other code first untill it was low
+    head_x = data['you']['body'][0]['x']
+    head_y = data['you']['body'][0]['y']
+    food_x = data['board']['food'][0]['x']
+    food_y = data['board']['food'][0]['y']
     
-        #If *Head x_location - food x_location = +(positive)* then *move left*
-        #If *Head x_location - food x_location = -(negative)* then *move right*
-            #If *Head x_location - food x_location = 0* then *don't change x_location*    - don't need
+    if health < 26:
+        #this would have it doing any other code first untill it was low health
         
-        #If *Head y_location - food y_location = +(positive)* then *move up*
-        #If *Head y_location - food y_location = -(negative)* then *move down*
-            #If *Head y_location - food y_location = 0* then *don't change y_location*    - don't need
+        if head_x > food_x:
+            direction ='left'            
+        elif head_x < food_x:
+            direction ='right'
+            #this makes the x cordinate align with the food
+        
+        elif head_y > food_y:
+            direction ='up'
+        elif head_y < food_y:
+            direction ='down'
+            #this makes the y cordinate align with the food
+    
+    
+        #If head_x > food_x then *move left*            
+        #If head_x < food_x then *move right*
+            #If *Head x_location = food x_location = 0* then *don't change x_location*    - don't need
+        
+        #If head_y > food_y then *move up*
+        #If head_y < food_y then *move down*
+            #If *Head y_location = food y_location = 0* then *don't change y_location*    - don't need
     
    
     
